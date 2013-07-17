@@ -1,0 +1,15 @@
+{
+    "db": {
+        "mysql": {
+            "connectionInfo":{
+                "host":"184.72.36.154",
+                "user":"bigheaddbuser",
+                "password":"17+gCs+07",
+                "database":"bighead"
+            }
+        }
+    },
+    "main": {
+        "port": 3333
+    }
+}
