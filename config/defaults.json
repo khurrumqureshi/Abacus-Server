@@ -3,11 +3,11 @@
         "mysql": {
             "connectionInfo":{
                 "host":"184.72.36.154",
-                "user":"bigheaddbuser",
+                "user":"bhdbuser",
                 "password":"17+gCs+07",
                 "database":"bighead"
             },
-            "connectionUrl":"mysql://bigheaddbuser:17+gCs+07@184.72.36.154/bighead"
+            "connectionUrl":"mysql://bhdbuser:17+gCs+07@184.72.36.154/bighead"
         }
     },
     "main": {
