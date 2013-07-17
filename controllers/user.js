@@ -17,7 +17,7 @@ function getUser(req, res, next){
             if(err)
                 return next(err);
 
-            res.send(results);
+            res.send(results.length>0 ? results[0] : {level:1});
 
         });
     })
