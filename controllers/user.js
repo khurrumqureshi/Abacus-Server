@@ -4,7 +4,7 @@ var db = require('../lib/db-config');
 exports.setup = function(app) {
     app.get('/api/user/:userId/details',getUser);
     app.put('/api/user/:userId/score/:score',updateUserScore);
-    app.put('/api/user/:userId/level/:gameLevel',updateUserGameLevel)
+    app.put('/api/user/:userId/level/:gameLevel/score/:score',updateUserGameLevelAndScore)
 }
 
 function getUser(req, res, next){
@@ -39,12 +39,12 @@ function updateUserScore(req, res, next){
     })
 }
 
-function updateUserGameLevel(req, res, next){
+function updateUserGameLevelAndScore(req, res, next){
     db.pool.getConnection(function(err, connection) {
         if(err)
             return next(err);
 
-        connection.query('UPDATE bh_student SET game_level=? WHERE id = ?', [req.params.gameLevel,req.params.userId], function(err, results) {
+        connection.query('UPDATE bh_student SET game_level=?, score=score+? WHERE id = ?', [req.params.gameLevel,req.params.score,req.params.userId], function(err, results) {
             connection.end();
             if(err)
                 return next(err);
