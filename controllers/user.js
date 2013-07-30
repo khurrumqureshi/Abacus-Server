@@ -4,7 +4,8 @@ var db = require('../lib/db-config');
 exports.setup = function(app) {
     app.get('/api/user/:userId/details',getUser);
     app.put('/api/user/:userId/score/:score',updateUserScore);
-    app.put('/api/user/:userId/level/:gameLevel/score/:score',updateUserGameLevelAndScore)
+    app.put('/api/user/:userId/level/:gameLevel/score/:score',updateUserGameLevelAndScore
+    )
 }
 
 function getUser(req, res, next){
