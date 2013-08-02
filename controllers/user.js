@@ -29,7 +29,7 @@ function updateUserScore(req, res, next){
         if(err)
             return next(err);
 
-        connection.query('UPDATE bh_student SET score=score+? WHERE id = ?', [req.params.score,req.params.userId], function(err, results) {
+        connection.query('UPDATE bh_student SET point=point+? WHERE id = ?', [req.params.score,req.params.userId], function(err, results) {
             connection.end();
             if(err)
                 return next(err);
