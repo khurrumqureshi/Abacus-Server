@@ -4,6 +4,7 @@ var db = require('../lib/db-config');
 exports.setup = function(app) {
     app.get('/api/user/:userId/details',getUser);
     app.put('/api/user/:userId/score/:score',updateUserScore);
+    app.put('/api/user/:userId/challenge/:challengeId/score/:score',updateUserChallengeScore);
     app.put('/api/user/:userId/level/:gameLevel/score/:score',updateUserGameLevelAndScore
     )
 }
@@ -30,6 +31,22 @@ function updateUserScore(req, res, next){
             return next(err);
 
         connection.query('UPDATE bh_student SET point=point+? WHERE id = ?', [req.params.score,req.params.userId], function(err, results) {
+            connection.end();
+            if(err)
+                return next(err);
+
+            res.send(results);
+
+        });
+    })
+}
+
+function updateUserChallengeScore(req, res, next){
+    db.pool.getConnection(function(err, connection) {
+        if(err)
+            return next(err);
+
+        connection.query('UPDATE bh_student_challenge_point SET point=? WHERE student_id = ? AND challenge_id = ?', [req.params.score,req.params.userId,req.params.challengeId], function(err, results) {
             connection.end();
             if(err)
                 return next(err);
