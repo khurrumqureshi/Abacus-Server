@@ -14,7 +14,7 @@ function getUser(req, res, next){
         if(err)
             return next(err);
 
-        connection.query('SELECT * FROM bh_student WHERE id = ?', [req.params.userId], function(err, results) {
+        connection.query('SELECT * FROM bh_student WHERE user_id = ?', [req.params.userId], function(err, results) {
             connection.end();
             if(err)
                 return next(err);
@@ -30,7 +30,7 @@ function updateUserScore(req, res, next){
         if(err)
             return next(err);
 
-        connection.query('UPDATE bh_student SET point=point+? WHERE id = ?', [req.params.score,req.params.userId], function(err, results) {
+        connection.query('UPDATE bh_student SET point=point+? WHERE user_id = ?', [req.params.score,req.params.userId], function(err, results) {
             connection.end();
             if(err)
                 return next(err);
